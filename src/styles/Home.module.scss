@@ -1,0 +1,29 @@
+.contentDiv {
+  padding: 4rem 9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    padding-bottom: 2rem;
+    color: #dc3b0a;
+  }
+}
+
+.mapDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .contentDiv {
+    padding: 4rem 2rem;
+  }
+
+  .mapDiv {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(9, 1fr);
+  }
+}
