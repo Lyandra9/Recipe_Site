@@ -1,0 +1,25 @@
+.resultDiv {
+  text-align: center;
+  color: #dc3b0a;
+}
+
+.mapDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  padding: 4rem 9rem;
+}
+
+@media (max-width: 600px) {
+  .resultDiv {
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+  .mapDiv {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(9, 1fr);
+    padding: 2rem 2rem;
+  }
+}

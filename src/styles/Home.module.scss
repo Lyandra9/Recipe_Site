@@ -7,6 +7,7 @@
   h1 {
     padding-bottom: 2rem;
     color: #dc3b0a;
+    font-size: 2.5rem;
   }
 }
 
@@ -17,13 +18,27 @@
   row-gap: 2rem;
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .contentDiv {
     padding: 4rem 2rem;
+
+    h1 {
+      text-align: center;
+    }
   }
 
   .mapDiv {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(9, 1fr);
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+  .contentDiv {
+    padding: 2rem;
+  }
+  .mapDiv {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(8, 1fr);
   }
 }

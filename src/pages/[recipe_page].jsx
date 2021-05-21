@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Loading from "../components/Loading";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import styles from "../styles/recipe_page.module.scss";
 
 export default function Post() {
@@ -30,71 +28,65 @@ export default function Post() {
     <div>
       {loading && <Loading />}
       {!loading && (
-        <div>
-          <Header />
-          <div className={styles.recipePageBigDiv}>
-            <h1>{required.recipe.label}</h1>
-            <div className={styles.alertsDiv}>
-              <span
-                className={
-                  !required.recipe.cautions[0] && styles.spanAlertEmpty
-                }
-              >
-                {"Warning: " + required.recipe.cautions}
-              </span>
+        <div className={styles.recipePageBigDiv}>
+          <h1>{required.recipe.label}</h1>
+          <div className={styles.alertsDiv}>
+            <span
+              className={!required.recipe.cautions[0] && styles.spanAlertEmpty}
+            >
+              {"Warning: " + required.recipe.cautions}
+            </span>
 
-              <span
-                className={
-                  !required.recipe.dietLabels[0] && styles.spanAlertEmpty
-                }
-              >
-                {required.recipe.dietLabels}
-              </span>
+            <span
+              className={
+                !required.recipe.dietLabels[0] && styles.spanAlertEmpty
+              }
+            >
+              {required.recipe.dietLabels}
+            </span>
 
-              <span
-                className={!required.recipe.dishType && styles.spanAlertEmpty}
-              >
-                {required.recipe.dishType}
-              </span>
+            <span
+              className={!required.recipe.dishType && styles.spanAlertEmpty}
+            >
+              {required.recipe.dishType}
+            </span>
+          </div>
+          <img src={required.recipe.image} alt="" />
+          <div className={styles.recipeContentDiv}>
+            <div className={styles.col1}>
+              <h2>Ingredients:</h2>
+              <ul>
+                {required.recipe.ingredients.map((i) => {
+                  return <li>{i.text}</li>;
+                })}
+              </ul>
+              <h3>{"Source: " + required.recipe.source}</h3>
             </div>
-            <img src={required.recipe.image} alt="" />
-            <div className={styles.recipeContentDiv}>
-              <div className={styles.col1}>
-                <h2>Ingredients:</h2>
-                <ul>
-                  {required.recipe.ingredients.map((i) => {
-                    return <li>{i.text}</li>;
-                  })}
-                </ul>
-                <h3>{"Source: " + required.recipe.source}</h3>
-              </div>
-              <div className={styles.col2}>
-                <h2> Info: </h2>
-                <h3>
-                  Cuisine Type:
-                  <span>{required.recipe.cuisineType || " Not informed"}</span>
-                </h3>
-                <h3>
-                  Calories:
-                  <span>
-                    {Math.round(required.recipe.calories) || " Not informed"}
-                    kcal
-                  </span>
-                </h3>
-                <h3>
-                  Yield:
-                  <span>{required.recipe.yield || " Not informed"}</span>
-                </h3>
-                <h3>
-                  Total Weight:
-                  <span>
-                    {Math.round(required.recipe.totalWeight) || " Not informed"}
-                  </span>
-                </h3>
-              </div>
+            <div className={styles.col2}>
+              <h2> Info: </h2>
+              <h3>
+                Cuisine Type:
+                <span>{required.recipe.cuisineType || " Not informed"}</span>
+              </h3>
+              <h3>
+                Calories:
+                <span>
+                  {Math.round(required.recipe.calories) || " Not informed"}
+                  kcal
+                </span>
+              </h3>
+              <h3>
+                Yield:
+                <span>{required.recipe.yield || " Not informed"}</span>
+              </h3>
+              <h3>
+                Total Weight:
+                <span>
+                  {Math.round(required.recipe.totalWeight) || " Not informed"}
+                </span>
+              </h3>
             </div>
           </div>
-          <Footer />
         </div>
       )}
     </div>

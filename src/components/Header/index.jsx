@@ -2,12 +2,18 @@ import styles from "./header.module.scss";
 import { FiSearch } from "react-icons/fi";
 import { SiCodechef } from "react-icons/si";
 import Link from "next/link";
+import { useStatesContext } from "../../context/StatesContext";
+import { useRouter } from "next/router";
 
-export default function Header({ search, setSearch, query, setQuery }) {
+export default function Header() {
+  const router = useRouter();
+  const { setQuery, search, setSearch, query } = useStatesContext();
+
   const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
+    router.push(`/Result`);
   };
 
   const updateSearch = (e) => {
