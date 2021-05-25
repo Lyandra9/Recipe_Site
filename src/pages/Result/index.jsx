@@ -4,6 +4,7 @@ import Recipe from "../../components/Recipe";
 import { useEffect, useState } from "react";
 import Loading from "../../components/Loading";
 import NothingFound from "../../components/NothingFound";
+import Filter from "../../components/Filter";
 
 export default function Result() {
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,7 @@ export default function Result() {
       {loading && <Loading />}
       {!loading && recipes.length != 0 && (
         <div className={styles.resultDiv}>
-          <h1>Showing results for "{query}"</h1>
+          <Filter />
           <div className={styles.mapDiv}>
             {recipes.map((i) => {
               return (
